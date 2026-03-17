@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英语字母及音标学习</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">英语学习 <span class="accent">.</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#letters" class="nav-link">字母认读</a></li>
+      <li><a href="#families" class="nav-link">单词家族</a></li>
+      <li><a href="#monophthongs" class="nav-link">单元音</a></li>
+      <li><a href="#diphthongs" class="nav-link">双元音</a></li>
+      <li><a href="#consonants" class="nav-link">辅音</a></li>
+      <li><a href="#quiz" class="nav-link">听音选词</a></li>
+      <li><a href="#phonics-quiz" class="nav-link">听辨挑战</a></li>
+      <li><a href="#heatmap" class="nav-link">学习热力图</a></li>
+      <li><a href="#mistakes" class="nav-link">错题本</a></li>
+      <li><a href="#review" class="nav-link">智能复习</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <div class="tabs">
+      <button class="tab active" data-tab="letters">📖 字母认读</button>
+      <button class="tab" data-tab="families">🔤 单词家族</button>
+      <button class="tab" data-tab="monophthongs">🗣️ 单元音</button>
+      <button class="tab" data-tab="diphthongs">🎵 双元音</button>
+      <button class="tab" data-tab="consonants">🔊 辅音</button>
+      <button class="tab" data-tab="quiz">🎮 听音选词</button>
+      <button class="tab" data-tab="phonics-quiz">🎯 听辨挑战</button>
+      <button class="tab" data-tab="heatmap">📊 学习热力图</button>
+      <button class="tab" data-tab="mistakes">📝 错题本</button>
+      <button class="tab" data-tab="review">💡 智能复习</button>
+    </div>
+
+    <div class="tab-content active" id="letters"></div>
+    <div class="tab-content" id="families"></div>
+    <div class="tab-content" id="monophthongs"></div>
+    <div class="tab-content" id="diphthongs"></div>
+    <div class="tab-content" id="consonants"></div>
+    <div class="tab-content" id="quiz"></div>
+    <div class="tab-content" id="phonics-quiz"></div>
+    <div class="tab-content" id="heatmap"></div>
+    <div class="tab-content" id="mistakes"></div>
+    <div class="tab-content" id="review"></div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Chrome/Edge 要求首次 speak 必须在用户手势内触发。
+    // 使用 capture:true 在任意首次点击时执行，用一个极短静音词完成"解锁"。
+    // 注意：不调用 cancel()，不干扰后续 speakUK 的调度。
+    document.addEventListener('click', function unlock() {
+      if (!window.speechSynthesis) return;
+      const u = new SpeechSynthesisUtterance(' ');
+      u.volume = 0; u.rate = 10;
+      window.speechSynthesis.speak(u);
+    }, { once: true, capture: true });
+  </script>
+</body>
+</html>
